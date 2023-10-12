@@ -1,7 +1,8 @@
 import { Producto } from "./Producto.model";
 
 export interface ListaCompra {
-  id: number,
+  id?: number,
   nombre: string,
   productos: Producto[]
 }
+
