@@ -1,0 +1,20 @@
+<mat-list-option>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" (click)="onClick($event)" aria-label="Menú de producto">
+      <mat-icon>more_vert</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="abrirEditarProducto()" >
+          <mat-icon>edit</mat-icon>
+          <span>Editar producto</span>
+      </button>
+      <button mat-menu-item (click)="abrirEliminarProducto()" >
+          <mat-icon>delete</mat-icon>
+          <span>Eliminar producto</span>
+      </button>
+  </mat-menu>
+
+  <span class="nombre">{{ datosProducto.nombre }}</span>
+  <span class="unidades">{{ datosProducto.unidades }}</span>
+</mat-list-option>

@@ -1,7 +1,10 @@
-import { Component, inject } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { Component } from '@angular/core';
+import { Observable, map, shareReplay } from 'rxjs';
+import { NuevaListaComponent } from './components/nueva-lista/nueva-lista.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ListasCompraService } from './services/listas-compra.service';
+import { ListaCompra } from './models/ListaCompra.model';
 
 @Component({
   selector: 'app-root',
@@ -15,21 +18,30 @@ export class AppComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) { };
-
-
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private dialog: MatDialog,
+    private listasCompraService: ListasCompraService
+  ) { };
 
   doLogout() {
 
-
-
   };
-
-
 
   abrirDialogoNuevaLista() {
+    const dialog = this.dialog.open(NuevaListaComponent);
 
-
-
+    dialog.afterClosed().subscribe({
+      next: async (nombreLista: string) => {
+        if (nombreLista && nombreLista.trim() !== '') {
+          await this.listasCompraService.createListaCompra({
+            nombre: nombreLista,
+            productos: []
+          } as ListaCompra);
+        };
+      },
+      error: (error) => console.log(error)
+    });
   };
+
 }

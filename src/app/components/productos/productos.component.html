@@ -1,0 +1,23 @@
+<div class="noHayListaSeleccionada" *ngIf="noHayListaSeleccionada">
+  <h1>No hay lista seleccionada</h1>
+  <h2>Selecciona una lista de la lista lateral o añade una nueva.</h2>
+</div>
+
+<div class="listaProductos" *ngIf="!noHayListaSeleccionada">
+  <mat-selection-list *ngIf="productos?.length">
+      <app-item-producto *ngFor="let producto of productos" [datosProducto]="producto" [idListaCompra]="idLista"></app-item-producto>
+  </mat-selection-list>
+
+  <div class="noHayListaSeleccionada" *ngIf="productos?.length === 0">
+    <h1>No hay productos en esta lista.</h1>
+    <h2>Haz click en el botón de <strong>añadir productos</strong>.</h2>
+  </div>
+
+</div>
+
+<div class="fab-container" *ngIf="!noHayListaSeleccionada">
+  <button mat-fab extended color="accent" (click)="abrirDialogoNuevoProducto()">
+      <mat-icon>inventory_2</mat-icon>
+      Añadir producto
+  </button>
+</div>

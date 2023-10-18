@@ -11,10 +11,9 @@ import { ListasCompraService } from 'src/app/services/listas-compra.service';
 export class ListasCompraComponent implements OnInit {
   listasCompra$!: Observable<ListaCompra[]>;
 
-  constructor(private listasCompraService: ListasCompraService) { };
+  constructor(private listasCompraService: ListasCompraService) {}
 
   ngOnInit(): void {
     this.listasCompra$ = this.listasCompraService.getListasCompra();
-
-  };
+  }
 }

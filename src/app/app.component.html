@@ -1,19 +1,25 @@
 <div>
   <mat-toolbar color="primary">
-    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+    <button
+      type="button"
+      aria-label="Toggle sidenav"
+      mat-icon-button
+      (click)="drawer.toggle()"
       *ngIf="isHandset$ | async">
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
     </button>
     <span>Shopping List</span>
     <span class="spacer"></span>
-    <button mat-icon-button aria-label="Logout" (click)="doLogout()">
+    <button mat-icon-button aria-label="Logout" (click)="doLogout()" >
       <mat-icon>logout</mat-icon>
     </button>
   </mat-toolbar>
 
   <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #drawer class="sidenav" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-sidenav #drawer class="sidenav"
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="(isHandset$ | async) === false">
       <mat-toolbar>Menu</mat-toolbar>
 
       <app-listas-compra></app-listas-compra>
@@ -24,9 +30,7 @@
       </button>
     </mat-sidenav>
     <mat-sidenav-content>
-      <!-- Add Content Here -->
+      <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
-
-<!-- pagina  47-->
