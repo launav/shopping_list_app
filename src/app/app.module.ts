@@ -18,14 +18,17 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { ItemProductoComponent } from './components/productos/item-producto/item-producto.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NuevoProductoComponent } from './dialogs/nuevo-producto/nuevo-producto.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MatMenuModule} from '@angular/material/menu';
-import { EditarProductoComponent } from './components/editar-producto/editar-producto.component';
-import { NuevaListaComponent } from './components/nueva-lista/nueva-lista.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { EditarProductoComponent } from './dialogs/editar-producto/editar-producto.component';
+import { NuevaListaComponent } from './dialogs/nueva-lista/nueva-lista.component';
 import { ItemListaCompraComponent } from './components/item-lista-compra/item-lista-compra.component';
-import { EditarListaComponent } from './components/editar-lista/editar-lista.component';
+import { EditarListaComponent } from './dialogs/editar-lista/editar-lista.component';
+import { EliminarListaComponent } from './dialogs/eliminar-lista-compra/eliminar-lista-compra.component';
+import { EliminarProductoCompraComponent } from './dialogs/eliminar-producto-compra/eliminar-producto-compra.component';
+import { RegistroComponent } from './auth/registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { EditarListaComponent } from './components/editar-lista/editar-lista.com
     NuevaListaComponent,
     ItemListaCompraComponent,
     EditarListaComponent,
+    EliminarListaComponent,
+    EliminarProductoCompraComponent,
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +61,8 @@ import { EditarListaComponent } from './components/editar-lista/editar-lista.com
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatMenuModule
+    MatMenuModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

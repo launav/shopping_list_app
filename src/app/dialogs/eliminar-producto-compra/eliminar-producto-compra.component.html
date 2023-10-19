@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Eliminar lista de la compra</h1>
+<div mat-dialog-content>
+  <p>¿Estás seguro de que deseas eliminar este producto de la lista de la compra? <strong>No se podrá deshacer</strong>
+  </p>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="cancelar()">No</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true">Sí, seguro</button>
+</div>

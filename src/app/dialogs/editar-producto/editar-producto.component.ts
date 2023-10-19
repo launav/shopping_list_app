@@ -12,9 +12,9 @@ export class EditarProductoComponent {
   constructor(
     private dialog: MatDialogRef<EditarProductoComponent>,
     @Inject(MAT_DIALOG_DATA) public datosProducto: Producto
-  ) {}
+  ) { };
 
   cancelar() {
     this.dialog.close();
-  }
+  };
 }

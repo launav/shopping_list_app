@@ -21,7 +21,7 @@ export class ProductosComponent implements OnInit, OnDestroy {
     private listasCompraService: ListasCompraService,
     private route: ActivatedRoute,
     private dialog: MatDialog
-  ) {}
+  ) { };
 
   ngOnInit(): void {
     this.subscriptionProductos = this.route.params.subscribe({
@@ -35,11 +35,11 @@ export class ProductosComponent implements OnInit, OnDestroy {
             .subscribe({
               next: (response: Producto[]) => this.productos = response,
               error: (error) => console.log(error)
-            })
-        }
+            });
+        };
       }
     });
-  }
+  };
 
   abrirDialogoNuevoProducto() {
     const dialog = this.dialog.open(NuevoProductoComponent);
@@ -50,10 +50,10 @@ export class ProductosComponent implements OnInit, OnDestroy {
         }
       },
       error: (error) => console.log(error)
-    })
-  }
+    });
+  };
 
   ngOnDestroy(): void {
     this.subscriptionProductos.unsubscribe();
-  }
+  };
 }

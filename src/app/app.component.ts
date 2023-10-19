@@ -1,7 +1,7 @@
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
 import { Observable, map, shareReplay } from 'rxjs';
-import { NuevaListaComponent } from './components/nueva-lista/nueva-lista.component';
+import { NuevaListaComponent } from './dialogs/nueva-lista/nueva-lista.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ListasCompraService } from './services/listas-compra.service';
 import { ListaCompra } from './models/ListaCompra.model';

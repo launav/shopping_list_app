@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { Producto } from 'src/app/models/Producto.model';
-import { EditarProductoComponent } from '../../editar-producto/editar-producto.component';
+import { EditarProductoComponent } from '../../../dialogs/editar-producto/editar-producto.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ListasCompraService } from 'src/app/services/listas-compra.service';
+import { EliminarProductoCompraComponent } from '../../../dialogs/eliminar-producto-compra/eliminar-producto-compra.component';
 
 @Component({
   selector: 'app-item-producto',
@@ -37,17 +38,26 @@ export class ItemProductoComponent {
       next: async (result: Producto) => {
         if (result) {
           await this.listasCompraService.updateProductoFromListaCompra(this.idListaCompra, this.datosProducto.id as string, result);
+        };
+      },
+      error: (error) => console.log(error)
+    });
+  }
+
+  abrirEliminarProducto() {
+    const dialog = this.dialog.open(EliminarProductoCompraComponent);
+
+    dialog.afterClosed().subscribe({
+      next: async (result: boolean) => {
+        if (result) {
+          await this.listasCompraService.deleteProductoFromListaCompra(this.idListaCompra,this.datosProducto.id as string);
         }
       },
       error: (error) => console.log(error)
-    })
-  }
-
-  abrirEliminarProducto() { };
-
-  // pagina78
+    });
+   };
 
   onClick(evt: Event) {
     evt.stopPropagation();
-  }
+  };
 }

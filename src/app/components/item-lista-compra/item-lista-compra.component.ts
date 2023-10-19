@@ -2,7 +2,8 @@ import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ListaCompra } from 'src/app/models/ListaCompra.model';
 import { ListasCompraService } from 'src/app/services/listas-compra.service';
-import { EditarListaComponent } from '../editar-lista/editar-lista.component';
+import { EditarListaComponent } from '../../dialogs/editar-lista/editar-lista.component';
+import { EliminarListaComponent } from '../../dialogs/eliminar-lista-compra/eliminar-lista-compra.component';
 
 @Component({
   selector: 'app-item-lista-compra',
@@ -43,5 +44,17 @@ export class ItemListaCompraComponent {
     });
   };
 
-  abrirEliminarLista() { };
+  abrirEliminarLista() {
+    const dialog = this.dialog.open(EliminarListaComponent);
+
+    dialog.afterClosed().subscribe({
+      next: async (respuesta: boolean) => {
+        if (respuesta) {
+          await this.listasCompraService.deleteListaCompra(this.listaCompra.id as string);
+        }
+      },
+      error: (error) => console.log(error)
+    });
+  };
+
 }
