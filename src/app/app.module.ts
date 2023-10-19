@@ -24,6 +24,8 @@ import { MatInputModule } from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import { EditarProductoComponent } from './components/editar-producto/editar-producto.component';
 import { NuevaListaComponent } from './components/nueva-lista/nueva-lista.component';
+import { ItemListaCompraComponent } from './components/item-lista-compra/item-lista-compra.component';
+import { EditarListaComponent } from './components/editar-lista/editar-lista.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { NuevaListaComponent } from './components/nueva-lista/nueva-lista.compon
     NuevoProductoComponent,
     EditarProductoComponent,
     NuevaListaComponent,
+    ItemListaCompraComponent,
+    EditarListaComponent,
   ],
   imports: [
     BrowserModule,

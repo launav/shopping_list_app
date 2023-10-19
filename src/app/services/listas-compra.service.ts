@@ -29,7 +29,7 @@ export class ListasCompraService {
   }
 
   updateListaCompra(listaCompra: ListaCompra) {
-    const listaCompraRef = doc(this.firestore, `/listaCompra/${listaCompra.id}`);
+    const listaCompraRef = doc(this.firestore, `/listasCompra/${listaCompra.id}`);
     return setDoc(listaCompraRef, listaCompra);
   }
 

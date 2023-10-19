@@ -1,4 +1,3 @@
 <mat-nav-list>
-  <a mat-list-item href="#" [routerLink]="['/lista-compra',lista.id]" routerLinkActive="active" *ngFor="let lista of listasCompra$ | async">{{
-    lista.nombre }}</a>
+  <app-item-lista-compra *ngFor="let lista of listasCompra$ | async" [listaCompra]="lista"></app-item-lista-compra>
 </mat-nav-list>
