@@ -1,0 +1,21 @@
+<div class="login-container">
+  <form [formGroup]="loginForm" (submit)="login()">
+      <img src="/assets/provisional.png" alt="Shopping list" class="logo">
+      <h1>Shopping list - Login</h1>
+      <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" >
+          <mat-error *ngIf="loginForm.get('email')?.invalid">Escribe tu correo electrónico</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" formControlName="password" >
+          <mat-error *ngIf="loginForm.get('password')?.errors?.['required']">Escribe tu contraseña</mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.errors?.['minlength']">Mínimo 6 caracteres</mat-error>
+      </mat-form-field>
+      <div class="buttons">
+          <button type="button" [routerLink]="['/registro']" mat-button color="accent">Regístrate</button>
+          <button type="submit" [disabled]="loginForm.invalid" mat-raised-button color="primary">Login</button>
+      </div>
+  </form>
+</div>

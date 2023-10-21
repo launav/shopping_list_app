@@ -29,6 +29,8 @@ import { EditarListaComponent } from './dialogs/editar-lista/editar-lista.compon
 import { EliminarListaComponent } from './dialogs/eliminar-lista-compra/eliminar-lista-compra.component';
 import { EliminarProductoCompraComponent } from './dialogs/eliminar-producto-compra/eliminar-producto-compra.component';
 import { RegistroComponent } from './auth/registro/registro.component';
+import { LoginComponent } from './auth/login/login.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { RegistroComponent } from './auth/registro/registro.component';
     EliminarListaComponent,
     EliminarProductoCompraComponent,
     RegistroComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,8 @@ import { RegistroComponent } from './auth/registro/registro.component';
     MatFormFieldModule,
     MatInputModule,
     MatMenuModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

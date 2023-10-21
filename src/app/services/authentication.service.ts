@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Auth, UserCredential, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, UserCredential, createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth, signOut } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,10 @@ import { Auth, UserCredential, createUserWithEmailAndPassword, signInWithEmailAn
 */
 export class AuthenticationService {
 
-  constructor(private authFire: Auth) { };
+  isAuthenticated: boolean = false;
+
+  constructor(private authFire: Auth,
+    private router : Router) { };
 
   /**
    * Metodo para registrar al user mediante el email y contraseña
@@ -31,4 +35,11 @@ export class AuthenticationService {
     return signInWithEmailAndPassword(this.authFire, email, password);
   };
 
+  async logOut():Promise<any>{
+    await signOut(this.authFire);
+    this.isAuthenticated = false;
+    return this.router.navigate(['/login'])
+  }
+
+  // 113
 }

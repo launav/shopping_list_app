@@ -25,7 +25,7 @@ export class RegistroComponent {
     }, {
       validator: this.passwordsIguales('password', 'repitePassword')
     });
-  }
+  };
 
   passwordsIguales(passA: string, passB: string) {
     return (formGroup: FormGroup) => {
@@ -36,12 +36,12 @@ export class RegistroComponent {
         controlPassB.setErrors({ passwordsIguales: true });
       } else {
         controlPassB.setErrors(null);
-      }
+      };
     }
-  }
+  };
 
-  async doRegistro() {
-    const {email, password} = this.registroForm.value;
+  async registro() {
+    const { email, password } = this.registroForm.value;
 
     try {
       const response = await this.authenticationService.onRegister(email, password);
@@ -52,7 +52,7 @@ export class RegistroComponent {
         });
         this.router.navigate(['/login']);
       }
-    } catch(exception: any) {
+    } catch (exception: any) {
       console.log(exception);
       if (exception.code === 'auth/email-already-in-use') {
         this.snackBar.open('El email ya existe. Por favor, inténtalo con otro', 'Ok');
