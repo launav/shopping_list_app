@@ -4,6 +4,7 @@ import { EditarProductoComponent } from '../../../dialogs/editar-producto/editar
 import { MatDialog } from '@angular/material/dialog';
 import { ListasCompraService } from 'src/app/services/listas-compra.service';
 import { EliminarProductoCompraComponent } from '../../../dialogs/eliminar-producto-compra/eliminar-producto-compra.component';
+import { MatListOption } from '@angular/material/list';
 
 @Component({
   selector: 'app-item-producto',
@@ -55,6 +56,13 @@ export class ItemProductoComponent {
       },
       error: (error) => console.log(error)
     });
+   };
+
+   async toggleSelection(listOption: MatListOption){
+    await this.listasCompraService.updateProductoFromListaCompra(
+      this.idListaCompra, this.datosProducto.id as string, {
+        marcado: listOption.selected
+      });
    };
 
   onClick(evt: Event) {

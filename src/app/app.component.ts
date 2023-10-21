@@ -46,9 +46,14 @@ export class AppComponent implements OnInit {
     });
   };
 
-  doLogout() {
-    this.auth.logOut();
-    // this.router.navigate(['login'])
+  async doLogout() {
+    try {
+      await this.auth.logOut();
+      this.auth.isAuthenticated = false;
+      this.router.navigate(['login'])
+    } catch (error) {
+      console.log(error);
+    };
   };
 
   abrirDialogoNuevaLista() {

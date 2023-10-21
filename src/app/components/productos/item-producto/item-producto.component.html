@@ -1,4 +1,4 @@
-<mat-list-option>
+<mat-list-option #listOption [value]="datosProducto" [selected]="datosProducto.marcado" (click)="toggleSelection(listOption)">
 
   <button mat-icon-button [matMenuTriggerFor]="menu" (click)="onClick($event)" aria-label="Menú de producto">
       <mat-icon>more_vert</mat-icon>

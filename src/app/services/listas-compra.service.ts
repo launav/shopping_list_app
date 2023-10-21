@@ -3,6 +3,7 @@ import { CollectionReference, DocumentData, Firestore, addDoc, collection, colle
 import { ListaCompra } from '../models/ListaCompra.model';
 import { Observable } from 'rxjs';
 import { Producto } from '../models/Producto.model';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,21 +12,25 @@ export class ListasCompraService {
 
   listasCompraRef: CollectionReference;
 
-  constructor(private firestore: Firestore) {
+  constructor(
+    private firestore: Firestore,
+
+  ) {
     this.listasCompraRef = collection(firestore, '/listasCompra');
-  }
+  };
+
 
   createListaCompra(listasCompra: ListaCompra): Promise<DocumentData> {
-    return addDoc(this.listasCompraRef,listasCompra);
+    return addDoc(this.listasCompraRef, listasCompra);
   }
 
   getListasCompra(): Observable<ListaCompra[]> {
-    return collectionData(this.listasCompraRef, {idField: 'id'}) as Observable<ListaCompra[]>
+    return collectionData(this.listasCompraRef, { idField: 'id' }) as Observable<ListaCompra[]>
   }
 
   getListaCompra(id: string): Observable<ListaCompra> {
     const listaCompra = doc(this.firestore, `/listasCompra/${id}`);
-    return docData(listaCompra, {idField: 'id'}) as Observable<ListaCompra>;
+    return docData(listaCompra, { idField: 'id' }) as Observable<ListaCompra>;
   }
 
   updateListaCompra(listaCompra: ListaCompra) {
@@ -38,10 +43,10 @@ export class ListasCompraService {
     return deleteDoc(listaCompra);
   }
 
-  getProductosFromListaCompra(idLista: string):  Observable<Producto[]> {
+  getProductosFromListaCompra(idLista: string): Observable<Producto[]> {
     const productosRef = collection(this.firestore, `/listasCompra/${idLista}/productos`);
     const q = query(productosRef, orderBy('nombre'));
-    return collectionData(q, {idField: 'id'}) as Observable<Producto[]>;
+    return collectionData(q, { idField: 'id' }) as Observable<Producto[]>;
   }
 
   addProductoToListaCompra(idLista: string, producto: Producto): Promise<DocumentData> {
